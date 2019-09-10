@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+ 
+<style>
+* {
+  box-sizing: border-box;
+  
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+.column1{
+    float: left;
+  width: 33.33%;
+  padding: 100px;
+  height: 500px;
+  margin-top: 120px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.arrow {
+  cursor: pointer;
+  display: inline-block;  
+  height: 40px;
+  margin-left: 150px;
+  margin-right: 100px;
+  margin-top: 150px;
+  position: relative;
+  line-height: 2.5em;
+  padding-left: 1em;
+  padding-right: 2em;
+  background: powderblue;
+  color: black;
+  
+   &:after {
+    // triangle hover color
+    border-left: 20px solid white;
+  }
+}
+.gfg{
+    border-collapse: separate;
+    border-spacing: 15px 50px;
+}
+.rel{
+    position:relative;
+    background:linear-gradient(90deg,#f0027f,#75489f);
+}
+.arrow:after {
+  // the triangle
+  content: "";
+  position: absolute;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  height: 0px;
+  width: 0px;
+  margin-right: -20px;
+  right: 0; 
+}
+
+.arrow:hover, .arrow:active {
+  background: orange;
+  color: black;
+  &:after {
+    // triangle hover
+    border-left: 20px solid yellow;
+  }
+}
+button:visited, button:link {
+    
+  color: #F93;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>
+    var count=0,i=0,j=0,p=0;
+function myFunction() {
+    p++;
+   count+=1;
+   if(p>12)
+   {
+       alert("NO DELIVERY AGENTS TO BE ASSIGNED");
+       p--;
+       count--;
+   }
+   else
+   {
+        if(count<=3)
+        {
+
+            var row = document.getElementById("myRow").rows[i];
+            row.deleteCell(0);
+
+            var row = document.getElementById("mycolumn").rows[j];
+            var x = row.insertCell(0);
+            x.innerHTML = "<img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/>";
+        }
+        else
+        {
+            count=1;
+            i+=1;
+            var row = document.getElementById("myRow").rows[i];
+            row.deleteCell(0);
+            j+=1;
+            var row = document.getElementById("mycolumn").rows[j];
+             var x = row.insertCell(0);
+            x.innerHTML = "<img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/>"; 
+        
+        }
+   }
+  
+}
+function myanswer() {
+ 
+ count-=1;
+ 
+ if(p===0)
+ {
+    
+     alert("NO DELIVERY AGENTS TO BE REVOKED");
+    
+ }
+ else
+ {
+    if(count>0)
+    {
+        
+        var row = document.getElementById("mycolumn").rows[i];
+        row.deleteCell(0);
+        
+        var row = document.getElementById("myRow").rows[j];
+        var x = row.insertCell(0);
+        x.innerHTML = "<img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/>"; 
+    }
+    else
+    {
+        count=3;
+      
+        var row = document.getElementById("mycolumn").rows[i];
+        row.deleteCell(0);
+        
+        var row = document.getElementById("myRow").rows[j];
+         var x = row.insertCell(0);
+        x.innerHTML = "<img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/>";
+        i-=1;
+        j-=1;
+        
+    }
+}
+  
+  p--; 
+  
+}
+
+</script>
+</head>
+<body class="rel">
+    <div id="root"></div>
+    <script type="text/babel">
+      class Hello extends React.Component {
+        render() {
+          return <h1 align="center"><i><b><u>DELIVERY PERSONNEL MANAGER</u></b></i></h1>
+        }
+      }
+      ReactDOM.render(<Hello />, document.getElementById('root'))
+    </script>
+<div class="container">
+
+    
+
+
+<div class="row">
+  <div class="column" >
+    <table style="width:100%" id="myRow" class="gfg">
+  <h1 align="center" style="font-family:bookman; color:greenyellow ">
+      <i><b><u>AVAILABLE &ensp;  AGENTS</u></b></i></h1>
+  <tr>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+  </tr>
+  
+ 
+   <tr>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+  </tr>
+ 
+  
+   <tr>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+  </tr>
+ 
+ 
+   <tr>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+    <td><img src='https://cdn1.iconfinder.com/data/icons/e-commerce-64/683/ECOMMERCE_Icons_Delivery_agent-512.png' width='60' height='60'/></td>
+  </tr>
+ 
+</table>
+  </div>
+  <div class="column1" >
+   <button type="button" onclick="myFunction()" class="btn btn-info" >ASSIGN ->>>>>>></button>
+   <br><br><br><br>
+   
+   <button type="button" onclick="myanswer()" class="btn btn-info"><<<<<<<-REVOKE</button> 
+  </div>
+  <div class="column" >
+    <table style="width:100%" id="mycolumn" class="gfg">
+  <h1 align="center" style="font-family:bookman; color:greenyellow ">
+   <i><b><u>ON-DUTY &ensp;AGENTS</u></b></i></h1>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  
+   <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+ 
+  
+   <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  
+   <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+ 
+</table>
+  </div>
+</div>
+</div>
+</body>
+</html>
